@@ -1,0 +1,19 @@
+# Crear orden
+$order = Invoke-RestMethod -Uri http://localhost:3000/orders -Method POST -ContentType "application/json" -Body '{"currency":"EUR"}'
+
+# Debug: Mostrar respuesta completa
+Write-Host "Response received:"
+$order | Format-List
+
+$orderId = $order.orderId
+Write-Host "Order created: $orderId"
+
+# Agregar items
+Invoke-RestMethod -Uri "http://localhost:3000/orders/$orderId/items" -Method POST -ContentType "application/json" -Body '{"sku":"GAME001","quantity":1}'
+
+Invoke-RestMethod -Uri "http://localhost:3000/orders/$orderId/items" -Method POST -ContentType "application/json" -Body '{"sku":"BOOK001","quantity":2}'
+
+Invoke-RestMethod -Uri "http://localhost:3000/orders/$orderId/items" -Method POST -ContentType "application/json" -Body '{"sku":"FOOD001","quantity":3}'
+
+# Ver orden completa
+Invoke-RestMethod -Uri "http://localhost:3000/orders/$orderId" -Method GET

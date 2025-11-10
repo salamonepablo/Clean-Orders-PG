@@ -1,0 +1,42 @@
+{
+  "name": "clean-orders",
+  "version": "1.0.0",
+  "description": "Implementacion de clean architecture",
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "verify": "tsx scripts/verify-setup.ts",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "worker:outbox": "tsx src/infrastructure/messaging/outbox-dispatcher-worker.ts",
+    "worker:outbox:dev": "tsx watch src/infrastructure/messaging/outbox-dispatcher-worker.ts",
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "author": "PS",
+  "license": "ISC",
+  "dependencies": {
+    "@types/pg": "^8.15.6",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.29.1",
+    "pg": "^8.16.3",
+    "pino": "^9.0.0",
+    "pino-pretty": "^11.2.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@fastify/type-provider-typebox": "^3.5.0",
+    "@sinclair/typebox": "^0.31.17",
+    "@types/node": "^20.19.24",
+    "tsx": "^4.6.0",
+    "typescript": "^5.2.0",
+    "vitest": "^0.34.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
