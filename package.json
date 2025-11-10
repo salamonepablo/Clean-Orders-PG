@@ -15,7 +15,10 @@
     "build": "tsc",
     "start": "node dist/main.js",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:integration": "vitest run --config vitest.config.integration.ts",
+    "test:coverage": "vitest run --coverage",
+    "lint": "tsc --noEmit"
   },
   "author": "PS",
   "license": "ISC",

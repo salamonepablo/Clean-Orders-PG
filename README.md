@@ -1,5 +1,7 @@
 # Clean Orders - Microservicio de Pedidos
 
+[![PR CI](https://github.com/salamonepablo/clean-orders-pg/actions/workflows/pr-ci.yml/badge.svg)](https://github.com/salamonepablo/clean-orders-pg/actions/workflows/pr-ci.yml)
+
 Sistema de gestión de pedidos implementado con **Clean Architecture** y **Domain-Driven Design**.
 
 ## 🎯 Características
@@ -204,9 +206,27 @@ npm test
 # Tests en modo watch
 npm run test:watch
 
+# Tests de integración
+npm run test:integration
+
+# Coverage
+npm run test:coverage
+
 # Tests con PostgreSQL
 USE_POSTGRES=true npm test
 ```
+
+### CI/CD con GitHub Actions
+
+El proyecto incluye un workflow automático que se ejecuta en cada Pull Request:
+
+- ✅ Linting y type checking con TypeScript
+- ✅ Ejecución de migraciones en PostgreSQL 16
+- ✅ Tests unitarios y de integración
+- ✅ Coverage report
+- ✅ Build del proyecto
+
+Ver [.github/workflows/pr-ci.yml](.github/workflows/pr-ci.yml) para más detalles.
 
 ## 🛑 Cierre Graceful
 
