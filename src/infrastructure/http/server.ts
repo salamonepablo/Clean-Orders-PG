@@ -10,7 +10,7 @@ export async function buildServer(dependencies: ServerDependencies) {
   // Presentation layer (Controllers)
   const orderController = new OrderControllers(
     dependencies.createOrderUseCase,
-    dependencies.addItemToOrderUseCase
+    dependencies.addItemToOrderUseCase,
     dependencies.logger
   )
 
